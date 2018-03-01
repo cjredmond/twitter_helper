@@ -14,7 +14,7 @@ class IndexView(TemplateView):
         context['rating'] = 'None'
         if self.request.GET:
             data = self.request.GET
-            tweet = data['tweet']
+            tweet = data['tweetreact']
             print(tweet)
             analysis = TextBlob(clean_tweet(tweet))
             context['rating'] = analysis.sentiment.polarity

@@ -1,3 +1,4 @@
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,12 +7,18 @@
   </head>
   <body>
     <h2>Index</h2>
-    <form class="" action="" method="get">
+    <!-- <form class="" action="" method="get">
       {% csrf_token %}
       <input type="text" name="tweet" value="">
       <input type="submit" name="" value="Submit">
     </form>
 
-    <h4>{{ rating }}</h4>
+    <h4>{{ rating }}</h4> -->
+
+
+    <div id="root">
+
+    </div>
+    {% render_bundle 'main' %}
   </body>
 </html>
