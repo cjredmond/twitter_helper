@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import TweetBox from './TweetBox/TweetBox.js'
+import RatingsDash from './RatingsDash/RatingsDash.js'
 
 class App extends Component {
 
   state = {
-    tweet: 'None',
+    tweet: '',
     rating: 0,
-    backwards: 'None'
+    backwards: '',
+    'subjectivity': 0
   };
 
   hitApi = () => {
@@ -16,18 +18,22 @@ class App extends Component {
   };
 
   changeTweetHandler = (event) => {
-
+    this.setState({
+      tweet: [event.target.value],
+    })
     var x = event.target.value;
-    console.log(x)
+    var self = this;
     axios.get('test/?tweet=' + x)
       .then(function (response) {
         // console.log(response['data']['backwards']);
         var back = response['data']['backwards'];
+        var rate = response['data']['rating'];
+        var subj = response['data']['subjectivity']
+        self.setState({backwards: back,
+                       rating: rate,
+                       subjectivity: subj})
       })
-      // this.setState({
-      //   tweet: [event.target.value],
-      //   backwards: back
-      // })
+
 
     // console.log('changing');
     // console.log(this.state['tweet']);
@@ -36,15 +42,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>Enter a tweet</p>
-        <form className="" action="" method="get">
-          <input type="text" name="tweetreact"
-            onChange={this.changeTweetHandler}
-            defaultValue=''/>
-          <button onClick={this.hitApi}>Hit API</button>
-        </form>
-        <h2>{this.state.tweet}</h2>
-        <h3>{this.state.backwards}</h3>
+
+
+
+        <div className='tweetBoxWrapper'>
+          <div className='inputWrapper'>
+            <TweetBox
+            changed={this.changeTweetHandler}/>
+          </div>
+        </div>
+
+        <RatingsDash polarity={this.state.rating} subject={this.state.subjectivity} />
+
+
+
+
       </div>
     );
   }

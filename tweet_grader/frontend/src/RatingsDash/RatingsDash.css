@@ -1,0 +1,23 @@
+.ratingsDash {
+  padding-top: 10px;
+}
+
+.rating-card {
+  background-color: skyblue;
+  border: 1px solid darkblue;
+  box-shadow: 0 0 0 1px #A4D9F9;
+  height: 100px;
+  border-radius: 2px;
+  padding-top: 20px;
+  font-size: 40px;
+}
+
+.subj-card {
+  background-color: orange;
+  border: 1px solid darkred;
+  box-shadow: 0 0 0 1px red;
+  height: 100px;
+  border-radius: 2px;
+  padding-top: 20px;
+  font-size: 40px;
+}

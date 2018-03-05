@@ -3,3 +3,45 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+#tweetreact {
+  height: 65px;
+  width: 95%;
+  background-color: white;
+  margin-top: 5px;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+  border: none;
+}
+
+textarea, input {
+  outline: none;
+  border: none;
+}
+
+.inputWrapper {
+  min-height: 80px;
+  overflow: hidden;
+  vertical-align: top;
+  width: auto;
+  font-size: 18px;
+  border-color: #A4D9F9;
+  box-shadow: 0 0 0 1px #A4D9F9;
+  border-radius: 8px;
+  border: 1px solid #e6ecf0;
+  line-height: 20px;
+  display: block;
+  margin-left: 60px;
+  margin-right: 15px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.tweetBoxWrapper {
+  height: 154px;
+  width: 590px;
+  background-color: #E8F5FD;
+  border: 1px solid #e6ecf0;
+}

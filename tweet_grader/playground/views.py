@@ -6,18 +6,25 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+def clean_tweet(tweet):
+        return ' '.join(re.sub("(@[A-Za-z0-9]+|([^0-9A-Za-z \t])|(\w+:\/\/\S+))", " ", tweet).split())
+
 @api_view(['GET', 'POST'])
 def hello_world(request):
     if request.method == 'GET':
         tweet = request.GET['tweet']
+        analysis = TextBlob(clean_tweet(tweet))
         return Response({"message": 'GET',
                          "tweet": tweet,
-                         "backwards": tweet[::-1]})
+                         "backwards": tweet[::-1],
+                         "rating": round(analysis.sentiment.polarity,2),
+                         "subjectivity": round(analysis.sentiment.subjectivity,2)})
+
+
     return Response({"message": "NOT A POST", "tweet": request.GET['tweet']})
 
 
-def clean_tweet(tweet):
-        return ' '.join(re.sub("(@[A-Za-z0-9]+|([^0-9A-Za-z \t])|(\w+:\/\/\S+))", " ", tweet).split())
+
 
 class IndexView(TemplateView):
     template_name = 'index.html'

@@ -4,19 +4,24 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style media="screen">
+      .body {
+        height: 100%;
+      }
+      .content-container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
   <body>
-    <h2>Index</h2>
-    <!-- <form class="" action="" method="get">
-      {% csrf_token %}
-      <input type="text" name="tweet" value="">
-      <input type="submit" name="" value="Submit">
-    </form>
+    <div class="content-container">
+      <div id="root">
 
-    <h4>{{ rating }}</h4> -->
-
-
-    <div id="root">
+      </div>
 
     </div>
     {% render_bundle 'main' %}
